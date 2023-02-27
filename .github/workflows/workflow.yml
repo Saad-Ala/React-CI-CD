@@ -1,9 +1,9 @@
-name: React  CI
+name: React CI
 
 on:
   push:
     branches:
-      - "v2"
+      - "main"
       
   workflow_dispatch:
   
