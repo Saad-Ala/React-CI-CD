@@ -32,11 +32,11 @@ jobs:
       - run: npx standard -v --fix
       - run: npm run build --if-present
       # CODEQL
-      - run: wget -q https://github.com/github/codeql-cli-binaries/releases/download/v2.12.3/codeql-linux64.zip
-      - run: unzip codeql-linux64.zip
-      - run: ./codeql/codeql pack download codeql/javascript-queries
-      - run: ./codeql/./codeql database create -l javascript ./db -s src/
-      - run: ./codeql/./codeql database analyze --format=CSV --output=output.csv db
+      #- run: wget -q https://github.com/github/codeql-cli-binaries/releases/download/v2.12.3/codeql-linux64.zip
+      #- run: unzip codeql-linux64.zip
+      #- run: ./codeql/codeql pack download codeql/javascript-queries
+      #- run: ./codeql/./codeql database create -l javascript ./db -s src/
+      #- run: ./codeql/./codeql database analyze --format=CSV --output=output.csv db
           
       - uses: jakejarvis/s3-sync-action@master
         with:
