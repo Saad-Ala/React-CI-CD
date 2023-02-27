@@ -31,9 +31,6 @@ jobs:
         
       - run: npx standard -v --fix
       - run: npm run build --if-present
-      - run: wget -q https://github.com/jeremylong/DependencyCheck/releases/download/v8.1.1/dependency-check-8.1.1-release.zip
-      - run: unzip dependency-check-8.1.1-release.zip
-      - run: ./dependency-check/bin/dependency-check.sh --project demo_app --scan ./package-lock.json  --out ./out/
       # CODEQL
       - run: wget -q https://github.com/github/codeql-cli-binaries/releases/download/v2.12.3/codeql-linux64.zip
       - run: unzip codeql-linux64.zip
@@ -48,7 +45,7 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
+          AWS_REGION: 'eu-central-1'   # optional: defaults to us-east-1
           SOURCE_DIR: 'build'      # optional: defaults to entire repository
           
 
