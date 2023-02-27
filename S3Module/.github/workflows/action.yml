@@ -1,0 +1,6 @@
+name: "Synchro S3"
+description: 'Synchronise S3 directory'
+author: 'Saad ALAHYANE <s.alahyane@groupeonepoint.com>'
+runs:
+  using: docker
+  image: Dockerfile
