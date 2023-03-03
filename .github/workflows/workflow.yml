@@ -77,8 +77,10 @@ jobs:
     needs: lint
     steps:
       - uses: actions/checkout@v2
-      - run: pip install whispers
-      - run: sh .github/workflows/script/whisper_script.sh
+      - name: install whispers
+        run: pip install whispers
+      - name: run whispers
+        run: sh .github/workflows/script/whisper_script.sh
             
 
   deploy:
