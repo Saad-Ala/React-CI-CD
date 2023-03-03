@@ -55,7 +55,7 @@ jobs:
       - name: CodeQL analysis 
         run: ./codeql/./codeql database analyze --format=CSV --output=output.csv db
       
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
