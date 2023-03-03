@@ -33,20 +33,32 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
         
+  lint:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:       
       - name: Lint & fix  
         run: npx standard -v --fix
-        
+
+  build:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
       - name: build 
         run: npm run build --if-present
-      
+        
       # Share artifact inside workflow
-      
       - name: Share artifact inside workflow
         uses: actions/upload-artifact@v1
         with:
           name: react-github-actions-build
           path: build
           
+
+  codeql:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Install dependencies
         run: |
             wget -q https://github.com/github/codeql-cli-binaries/releases/download/v2.12.3/codeql-linux64.zip
@@ -64,7 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     # When application is successfully tested and build has been generated
     # Then we can start with deployment
-    needs: setup
+    needs: build
     steps:
     
       # Download previously shared build
